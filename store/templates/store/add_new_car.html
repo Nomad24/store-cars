@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }} :: {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-bottom: 50px;">
+    <div class="border-top" style="border-top: 1px solid #40c4ff;"></div>
+
+    <h1>Adding New Car</h1>
+
+<form action="{% url 'add_cars' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    {% comment %}
+    {{ form.non_field.errors }}
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}">Title: </label>
+        {{ form.title }}
+        <div class="invalid-feedback">
+            {{ form.title.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.slug.id_for_label }}">Url Title: </label>
+        {{ form.price }}
+        <div class="invalid-feedback">
+            {{ form.price.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.author.id_for_label }}">Author: </label>
+        {{ form.author }}
+        <div class="invalid-feedback">
+            {{ form.author.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.content.id_for_label }}">Content: </label>
+        {{ form.content }}
+        <div class="invalid-feedback">
+            {{ form.content.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.photo.id_for_label }}">Image: </label>
+        {{ form.photo }}
+        <div class="invalid-feedback">
+            {{ form.photo.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.category.id_for_label }}">Category: </label>
+        {{ form.category }}
+        <div class="invalid-feedback">
+            {{ form.category.errors }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ form.price.id_for_label }}">Price: </label>
+        {{ form.price }}
+        <div class="invalid-feedback">
+            {{ form.price.errors }}
+        </div>
+    </div>
+    {% endcomment %}
+
+<!--    {% comment %}-->
+<!--    {% for field in form %}-->
+<!--    <div class="form-group">-->
+<!--        {{ field.label_tag }}-->
+<!--        {{ field }}-->
+<!--        <div class="invalid-feedback">-->
+<!--            {{ field.errors }}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endfor %}-->
+<!--    {% endcomment %}-->
+
+    <button type="submit" class="btn btn-primary btn-block">Add Car</button>
+</form>
+
+</div>
+
+{% endblock %}
